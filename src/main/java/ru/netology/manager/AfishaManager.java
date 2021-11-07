@@ -1,6 +1,7 @@
 package ru.netology.manager;
 
 import ru.netology.domain.AfishaItems;
+import ru.netology.repository.AfishaRepository;
 import static java.lang.System.arraycopy;
 
 public class AfishaManager {
@@ -8,7 +9,8 @@ public class AfishaManager {
     private int movieCount = 10;
     private AfishaItems[] items = new AfishaItems[movieCount];
 
-    public AfishaManager(int movieCount) {
+    public AfishaManager(AfishaRepository repository, int movieCount) {
+        this.repository = repository;
         this.movieCount = movieCount;
     }
 

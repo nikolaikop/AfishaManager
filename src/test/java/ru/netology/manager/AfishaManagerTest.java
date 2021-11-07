@@ -3,7 +3,6 @@ package ru.netology.manager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.domain.AfishaItems;
-import ru.netology.manager.AfishaManager;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
@@ -79,24 +78,5 @@ class AfishaManagerTest {
         //System.out.println("expected = " + expected + " and" + " actual = " + actual);
     }
 
-    @Test
-    void getLastMoviesWithNull() {
-        AfishaManager manager = new AfishaManager(5);
-        AfishaItems[] expected = new AfishaItems[]{
-                eight,
-                nine,
-                ten,
-                eleven,
-                twelve,
-        };
-        manager.addMovie(twelve);
-        manager.addMovie(eleven);
-        manager.addMovie(ten);
-        manager.addMovie(nine);
-        manager.addMovie(eight);
 
-        AfishaItems[] actual = manager.getLastMovies();
-        assertArrayEquals(expected, actual);
-        //System.out.println("expected = " + expected + " and" + " actual = " + actual);
-    }
 }
