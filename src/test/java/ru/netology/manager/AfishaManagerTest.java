@@ -80,7 +80,7 @@ class AfishaManagerTest {
     }
 
     @Test
-    void getLastMoviesWithNull() {
+    void getLastMoviesWhen5() {
         AfishaManager manager = new AfishaManager(5);
         AfishaItems[] expected = new AfishaItems[]{
                 eight,
