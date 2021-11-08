@@ -1,14 +1,16 @@
-package ru.netology.manager;
+package ru.netology.repository;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.domain.AfishaItems;
+import ru.netology.manager.AfishaManager;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
-class AfishaManagerTest {
+class AfishaRepositoryTest {
 
-    AfishaManager manager = new AfishaManager();
+    AfishaRepository repository = new AfishaRepository();
+    AfishaManager manager = new AfishaManager(repository);
 
     AfishaItems one = new AfishaItems(1, "Avengers");
     AfishaItems two = new AfishaItems(2, "Santa Barbara");
@@ -40,43 +42,37 @@ class AfishaManagerTest {
     }
 
     @Test
-    public void addOneMoreMovie() {
+    void findAll() {
+        AfishaItems[] expected = new AfishaItems[]{one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve};
+        AfishaItems[] actual = repository.findAll();
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void addMovie() {
         manager.addMovie(one);
-        AfishaItems[] expected = new AfishaItems[]{
-                one,
-                twelve,
-                eleven,
-                ten,
-                nine,
-                eight,
-                seven,
-                six,
-                five,
-                four,
-        };
+        AfishaItems[] expected = new AfishaItems[]{one, twelve, eleven, ten, nine, eight, seven, six, five, four};
         AfishaItems[] actual = manager.getLastMovies();
         assertArrayEquals(expected, actual);
     }
 
     @Test
-    void getLastMovies() {
-
-        AfishaItems[] expected = new AfishaItems[]{
-                twelve,
-                eleven,
-                ten,
-                nine,
-                eight,
-                seven,
-                six,
-                five,
-                four,
-                three,
-        };
-        AfishaItems[] actual = manager.getLastMovies();
-        assertArrayEquals(expected, actual);
-        //System.out.println("expected = " + expected + " and" + " actual = " + actual);
+    void findById() {
+        AfishaItems actual = repository.findById(2);
+        assertEquals(two,actual);
     }
 
+    @Test
+    void removeById() {
+        AfishaItems[] expected = new AfishaItems[]{one, three, four, five, six, seven, eight, nine, ten, eleven, twelve};
+        AfishaItems[] actual = repository.removeById(2);
+        assertArrayEquals(expected, actual);
+    }
 
+    @Test
+    void removeAll() {
+        AfishaItems[] expected = new AfishaItems[]{};
+        AfishaItems[] actual = repository.removeAll();
+        assertArrayEquals(expected, actual);
+    }
 }

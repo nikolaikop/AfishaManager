@@ -6,28 +6,26 @@ import static java.lang.System.arraycopy;
 
 public class AfishaManager {
 
+    private AfishaRepository repository;
     private int movieCount = 10;
-    private AfishaItems[] items = new AfishaItems[movieCount];
 
+    public AfishaManager(AfishaRepository repository) {
+        this.repository = repository;
+    }
     public AfishaManager(AfishaRepository repository, int movieCount) {
         this.repository = repository;
         this.movieCount = movieCount;
     }
 
     public AfishaManager() {
-
     }
 
     public void addMovie(AfishaItems item) {
-        AfishaItems[] tmp = new AfishaItems[items.length+1];
-        arraycopy(items, 0, tmp, 0, items.length);
-        tmp[tmp.length - 1] = item;
-        items = tmp;
-        return;
+        repository.addMovie(item);
     }
 
     public AfishaItems[] getLastMovies() {
-
+        AfishaItems[] items = repository.findAll();
         AfishaItems[] result = new AfishaItems[movieCount];
         int counter = 0;
         for (int i = 0; i < movieCount; i++) {
@@ -36,5 +34,17 @@ public class AfishaManager {
         }
         arraycopy(result, 0, result, 0, counter);
         return result;
+    }
+
+    public void findById(int id) {
+        repository.findById(id);
+    }
+
+    public void removeById(int id) {
+        repository.removeById(id);
+    }
+
+    public void removeAll() {
+        repository.removeAll();
     }
 }
