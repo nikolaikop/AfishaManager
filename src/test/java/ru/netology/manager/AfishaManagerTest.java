@@ -36,8 +36,6 @@ class AfishaManagerTest {
         manager.addMovie(eight);
         manager.addMovie(nine);
         manager.addMovie(ten);
-        manager.addMovie(eleven);
-        manager.addMovie(twelve);
     }
 
     @Test
@@ -45,8 +43,6 @@ class AfishaManagerTest {
         manager.addMovie(one);
         AfishaItems[] expected = new AfishaItems[]{
                 one,
-                twelve,
-                eleven,
                 ten,
                 nine,
                 eight,
@@ -54,6 +50,8 @@ class AfishaManagerTest {
                 six,
                 five,
                 four,
+                three,
+                two,
         };
         AfishaItems[] actual = manager.getLastMovies();
         assertArrayEquals(expected, actual);
@@ -63,8 +61,6 @@ class AfishaManagerTest {
     void getLastMovies() {
 
         AfishaItems[] expected = new AfishaItems[]{
-                twelve,
-                eleven,
                 ten,
                 nine,
                 eight,
@@ -73,6 +69,8 @@ class AfishaManagerTest {
                 five,
                 four,
                 three,
+                two,
+                one,
         };
         AfishaItems[] actual = manager.getLastMovies();
         assertArrayEquals(expected, actual);
@@ -83,48 +81,24 @@ class AfishaManagerTest {
     void getLastMoviesWhen5() {
         AfishaManager manager = new AfishaManager(5);
         AfishaItems[] expected = new AfishaItems[]{
-                eight,
-                nine,
-                ten,
-                eleven,
                 twelve,
-        };
-        manager.addMovie(twelve);
-        manager.addMovie(eleven);
-        manager.addMovie(ten);
-        manager.addMovie(nine);
-        manager.addMovie(eight);
-
-        AfishaItems[] actual = manager.getLastMovies();
-        assertArrayEquals(expected, actual);
-        //System.out.println("expected = " + expected + " and" + " actual = " + actual);
-    }
-
-    @Test
-    void getLastMoviesWhen10() {
-        AfishaManager manager = new AfishaManager(10);
-        AfishaItems[] expected = new AfishaItems[]{
-                three,
-                four,
-                five,
-                six,
-                seven,
-                eight,
-                nine,
-                ten,
                 eleven,
-                twelve,
+                ten,
+                nine,
+                eight,
         };
-        manager.addMovie(twelve);
-        manager.addMovie(eleven);
-        manager.addMovie(ten);
-        manager.addMovie(nine);
-        manager.addMovie(eight);
-        manager.addMovie(seven);
-        manager.addMovie(six);
-        manager.addMovie(five);
-        manager.addMovie(four);
+        manager.addMovie(one);
+        manager.addMovie(two);
         manager.addMovie(three);
+        manager.addMovie(four);
+        manager.addMovie(five);
+        manager.addMovie(six);
+        manager.addMovie(seven);
+        manager.addMovie(eight);
+        manager.addMovie(nine);
+        manager.addMovie(ten);
+        manager.addMovie(eleven);
+        manager.addMovie(twelve);
 
         AfishaItems[] actual = manager.getLastMovies();
         assertArrayEquals(expected, actual);
@@ -135,31 +109,31 @@ class AfishaManagerTest {
     void getLastMoviesWhen12() {
         AfishaManager manager = new AfishaManager(12);
         AfishaItems[] expected = new AfishaItems[]{
-                one,
-                two,
-                three,
-                four,
-                five,
-                six,
-                seven,
-                eight,
-                nine,
-                ten,
-                eleven,
                 twelve,
+                eleven,
+                ten,
+                nine,
+                eight,
+                seven,
+                six,
+                five,
+                four,
+                three,
+                two,
+                one,
         };
-        manager.addMovie(twelve);
-        manager.addMovie(eleven);
-        manager.addMovie(ten);
-        manager.addMovie(nine);
-        manager.addMovie(eight);
-        manager.addMovie(seven);
-        manager.addMovie(six);
-        manager.addMovie(five);
-        manager.addMovie(four);
-        manager.addMovie(three);
-        manager.addMovie(two);
         manager.addMovie(one);
+        manager.addMovie(two);
+        manager.addMovie(three);
+        manager.addMovie(four);
+        manager.addMovie(five);
+        manager.addMovie(six);
+        manager.addMovie(seven);
+        manager.addMovie(eight);
+        manager.addMovie(nine);
+        manager.addMovie(ten);
+        manager.addMovie(eleven);
+        manager.addMovie(twelve);
 
         AfishaItems[] actual = manager.getLastMovies();
         assertArrayEquals(expected, actual);
