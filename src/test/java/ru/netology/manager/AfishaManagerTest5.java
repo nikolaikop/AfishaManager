@@ -3,15 +3,14 @@ package ru.netology.manager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.domain.AfishaItems;
-import ru.netology.manager.AfishaManager;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
-class AfishaManagerTest {
+class AfishaManagerTest5 {
 
-    AfishaManager manager = new AfishaManager();
+    AfishaManager manager = new AfishaManager(5);
 
-    AfishaItems one = new AfishaItems(1, "Avengers");         //equal to limit
+    AfishaItems one = new AfishaItems(1, "Avengers");           //More than limit
     AfishaItems two = new AfishaItems(2, "Santa Barbara");
     AfishaItems three = new AfishaItems(3, "Seven");
     AfishaItems four = new AfishaItems(4, "Konstantin");
@@ -21,6 +20,8 @@ class AfishaManagerTest {
     AfishaItems eight = new AfishaItems(8, "Spider Man");
     AfishaItems nine = new AfishaItems(9, "Batman");
     AfishaItems ten = new AfishaItems(10, "Trolls");
+    AfishaItems eleven = new AfishaItems(11, "Maleficent");
+    AfishaItems twelve = new AfishaItems(12, "Doctor Who");
 
     @BeforeEach
     void prepareManager() {
@@ -41,15 +42,10 @@ class AfishaManagerTest {
         manager.addMovie(one);
         AfishaItems[] expected = new AfishaItems[]{
                 one,
+                twelve,
+                eleven,
                 ten,
                 nine,
-                eight,
-                seven,
-                six,
-                five,
-                four,
-                three,
-                two,
         };
         AfishaItems[] actual = manager.getLastMovies();
         assertArrayEquals(expected, actual);
@@ -59,16 +55,12 @@ class AfishaManagerTest {
     void getLastMovies() {
 
         AfishaItems[] expected = new AfishaItems[]{
+                twelve,
+                eleven,
                 ten,
                 nine,
                 eight,
-                seven,
-                six,
-                five,
-                four,
-                three,
-                two,
-                one,
+
         };
         AfishaItems[] actual = manager.getLastMovies();
         assertArrayEquals(expected, actual);
